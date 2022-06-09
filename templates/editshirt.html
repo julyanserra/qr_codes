@@ -1,0 +1,51 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{{url_for('static', filename='assets/styles/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='assets/styles/styles.css')}}" rel="stylesheet">
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body class='default'>
+    <script>
+          function validateForm() {
+              var name = document.getElementById('name').value;
+              var text = document.getElementById('text').value;
+              var url = document.getElementById('url').value;
+              if(name == "" && text == "" && url == ""){
+                  alert("Please fill out relevant fields.");
+                  return false;
+              } else if (text != "" && url != ""){
+                alert("Please choose text or url");
+                return false;
+              }
+            return true;
+          }
+    </script>
+    <h2> Edit Shirt - {{name}}</h2>
+    <form class='form' action="/editshirt/{{id}}" onsubmit="return validateForm()" method="POST" enctype="multipart/form-data">
+        Shirt Name: <input type="text" id="name" name="name" value={{name}}><br>
+        <br> Text Content: <input type="text" id="text" name="text" value={{text}}><br>
+        <br> Redirect URL: <input type="text" id="url" name="url" value={{url}}><br>
+        <br> <input style="margin-left:45%;" type="file" name="file" autocomplete="off"><br>
+          <div>
+          <img src={{qr_url}}></img>
+          {%if img_url != None%}
+        </div>
+          <div>
+          <img src={{img_url}}></img>
+          {%endif%}
+        </div>
+        <button>Done</button>
+
+    </form>
+    <form class='form' action="/deleteshirt/{{id}}" method="GET" enctype="multipart/form-data">
+
+        <button>Delete</button>
+
+    </form>
+
+</body>
+
+
+</html>

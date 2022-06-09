@@ -1,0 +1,16 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{{url_for('static', filename='assets/styles/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='assets/styles/styles.css')}}" rel="stylesheet">
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body class='default'>
+  {%if img_url != None%}
+    <img src={{img_url}}></img>
+  {%else %}
+    <h1>{{text}}</h1>
+  {%endif%}
+</body>
+</html>

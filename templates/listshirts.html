@@ -1,0 +1,23 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="{{url_for('static', filename='assets/styles/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{url_for('static', filename='assets/styles/styles.css')}}" rel="stylesheet">
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+
+<body class='default'>
+    <h1> {{user["first_name"]}}'s Shirts </h1>
+    {%for shirt in shirts%}
+    <div onclick="location.href='/editshirt/{{shirt["shirt_id"]}}'"; style="cursor: pointer;" >
+    <h3>{{shirt["name"]}} </h3>
+      <img class="iconimage" src={{shirt["qr_url"]}}></img>
+    </div>
+  </a>
+    {%endfor%}
+</body>
+
+<br><br>
+<a href="/addshirt"><h3><button class='btn' href="/addshirt">Add Shirt</button></h3></a>
+</html>
